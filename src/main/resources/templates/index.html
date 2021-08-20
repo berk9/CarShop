@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragment/head :: head"></head>
+<body>
+
+<!-- Navbar -->
+<div th:replace="fragment/navbar :: navbar('home')">Navbar here</div>
+<!-- EO: Navbar -->
+
+<section id="carshop" class="d-flex align-items-center">
+
+    <div class="container-fluid" data-aos="zoom-out" data-aos-delay="100">
+        <div class="row justify-content-center">
+            <div class="col-xl-10">
+                <div class="row">
+                    <div class="col-xl-5">
+                        <h1>With Pizzaria La Jem it is always tasty.</h1>
+                        <h2>We are a talented startup searching for employees. Our biggest purpose is to change the pizza industry for good.</h2>
+                        <div sec:authorize="isAnonymous()">
+                            <a th:href="@{/register}" class="btn-get-started">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section><!-- End Hero -->
+
+</body>
+</html>

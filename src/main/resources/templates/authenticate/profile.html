@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/head :: head"></head>
+<body>
+
+<!-- Navbar -->
+<div th:replace="fragment/navbar :: navbar('home')">Navbar here</div>
+<!-- Navbar -->
+
+<h1 class="text-center text-dark">User Details</h1>
+<hr class="hr-2 bg-dark w-50">
+<div class="card w-50 mx-auto text-center" style="width: 18rem;">
+    <div class="card-body">
+        <h4 class="card-title">User details for <span th:text="${userProfile.username}"></span></h4>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    <h6>Full Name: </h6>
+                </div>
+                <div class="col">
+                    <span th:text="|${userProfile.name}  ${userProfile.surname}|"></span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    <h6>E-mail:  </h6>
+                </div>
+                <div class="col">
+                    <span th:text="${userProfile.email}"></span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    <h6>Phone number:  </h6>
+                </div>
+                <div class="col">
+                    <span th:text="|+359 ${userProfile.phoneNumber}|"></span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    <h6>City, Address: </h6>
+                </div>
+                <div class="col">
+                    <span th:text="|${userProfile.city}, ${userProfile.address}|"></span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="container w-50">
+    <div class="row">
+        <div class="col">
+            <form th:action="@{/authentication/sendConfirmEmail}" method="post">
+                <input id="userId" name="userId" type="hidden" th:value="${userProfile.id}"/>
+                <button type="submit"
+                        th:if="${userProfile.emailConfirmed == false}"
+                        class="btn btn-success btn-block my-4">Confirm your email address
+                </button>
+            </form>
+        </div>
+        <div class="col">
+            <button type="button"
+                    th:if="${userProfile.phoneNumberConfirmed == false}"
+                    class="btn btn-success btn-block my-4">Confirm your phone number
+            </button>
+        </div>
+        <div class="col">
+            <a  th:href="@{/authentication/edit}"
+                    class="btn btn-warning btn-block my-4 text-light">Edit your profile
+            </a>
+
+        </div>
+        <div class="col">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit"
+                        class="btn btn-danger btn-block my-4">
+                    Logout
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

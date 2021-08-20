@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/head :: head"></head>
+<body>
+
+<section id="loginSec" class="d-flex align-items-center">
+
+    <div class="container-fluid ml-auto" data-aos="zoom-out" data-aos-delay="100">
+        <div class="row justify-content-end">
+            <div class="col-xl-10">
+
+            </div>
+            <div class="col-lg-6 mr-4">
+                <h1 class="text-light text-center">Application login page.</h1>
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label class="text-light">User Name</label>
+                        <input type="text"
+                                       class="form-control"
+                                       th:value="${username}"
+                                       name="username"
+                                       placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label class="text-light">Password</label>
+                        <input type="password"
+                                       class="form-control"
+                                       placeholder="Password"
+                                       name="password">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-light btn-md w-50 my-2">Sign In</button>
+                        <br>
+                        <span class="text-light">You don't have an account?</span>
+                        <a th:href="@{/register}">Sign Up</a>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
+</section><!-- End Section -->
+
+    <!--Test credentials -->
+<!--    <div class="footer">-->
+<!--        A user and password pairs that you may use:-->
+<!--        <li>admin/admin (for admin user)</li>-->
+<!--        <li>employee/employee (for employee user)</li>-->
+<!--        <li>customer/customer (for customer user)</li>-->
+<!--    </div>-->
+    <!--Test credentials -->
+</div>
+</body>
+</html>
