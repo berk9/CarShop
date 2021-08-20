@@ -41,7 +41,7 @@ public class CartController {
     @GetMapping("/details/promotion/{id}")
     public String cartPromotionDetails(@PathVariable("id") Long promotionId, Model model, HttpSession session){
         model.addAttribute("promotion", this.promotionService.findById(promotionId));
-        return "promotionDetails";
+        return "cart/promotionDetails";
     }
 
     @PostMapping("/addCar")
