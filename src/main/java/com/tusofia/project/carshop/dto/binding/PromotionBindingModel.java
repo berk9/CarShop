@@ -26,7 +26,7 @@ public class PromotionBindingModel {
     @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private LocalDateTime validUntil;
 
-    @NotEmpty(message = "There must be more than zero products")
+    @NotEmpty(message = "There must be more than zero cars")
     private List<CarBindingModel> cars;
 
     public Long getId() { return id; }

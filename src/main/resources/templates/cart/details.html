@@ -24,13 +24,13 @@
             <tbody>
             <th:block th:each="item : ${#session.getAttribute('shopping-cart')}" th:object="${item}">
                 <tr class="row mx-auto">
-                    <th class="col-md-2 text-center"><img th:src="*{carDetailsViewModel.imgSrc}" alt="Product" height="150" width="150"></th>
+                    <th class="col-md-2 text-center"><img th:src="*{carDetailsViewModel.imgSrc}" alt="Car" height="150" width="150"></th>
                     <td class="col-md-3 text-center" th:text="*{carDetailsViewModel.name}"></td>
                     <td class="col-md-2 text-center" th:text="*{carDetailsViewModel.description}"></td>
                     <td class="col-md-2 text-center" th:text="*{carDetailsViewModel.price}"></td>
                     <td class="col-md-1 text-center" th:text="*{quantity}"></td>
                     <td class="col-md-2 text-center">
-                        <form th:action="@{/cart/removeProduct}" th:method="post">
+                        <form th:action="@{/cart/removeCar}" th:method="post">
                             <div class="button-holder d-flex justify-content-center">
                                 <input type="hidden" id="deleteId" name="deleteId" th:value="*{carDetailsViewModel.id}">
                                 <button type="submit" class="btn btn-danger">Remove</button>

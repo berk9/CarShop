@@ -39,12 +39,12 @@ public class CartController {
     }
 
     @GetMapping("/details/promotion/{id}")
-    public String cartOfferDetails(@PathVariable("id") Long promotionId, Model model, HttpSession session){
+    public String cartPromotionDetails(@PathVariable("id") Long promotionId, Model model, HttpSession session){
         model.addAttribute("promotion", this.promotionService.findById(promotionId));
         return "promotionDetails";
     }
 
-    @PostMapping("/addProduct")
+    @PostMapping("/addCar")
     public String addToCartConfirm(@ModelAttribute(name= "carId") Long carId, int quantity, HttpSession session) {
         this.cartService.addOneCarToCart(this.carService.findById(carId), quantity, session);
         return "redirect:/cars";
@@ -57,7 +57,7 @@ public class CartController {
         return "redirect:/cart/details";
     }
 
-    @PostMapping("/removeProduct")
+    @PostMapping("/removeCar")
     public String removeFromCartConfirm(@ModelAttribute(name="deleteId") Long deleteId, HttpSession session) {
         this.cartService.removeItemFromCart(deleteId, this.cartService.retrieveCart(session));
         return "redirect:/cart/details";
@@ -76,13 +76,13 @@ public class CartController {
         return "redirect:/home";
     }
 
-    @PostMapping("/checkoutOffer")
+    @PostMapping("/checkoutPromotion")
     public String checkoutConfirm(Long promotionId, String comment, BigDecimal price, Principal principal) {
         if(!this.cartService.checkIfEmailConfirmed(principal.getName())){
             return "redirect:/authentication/profile";
         }
 
-        OrderBindingModel orderBindingModel = this.cartService.prepareOrderFromOffer(promotionId, comment, price, principal.getName());
+        OrderBindingModel orderBindingModel = this.cartService.prepareOrderFromPromotion(promotionId, comment, price, principal.getName());
         this.orderService.addOrderForApproval(orderBindingModel);
         return "redirect:/home";
     }

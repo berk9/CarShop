@@ -24,8 +24,8 @@ public class CarService {
     }
 
     @Transactional
-    public Car createCar(CarBindingModel productModel) {
-        Car car = this.modelMapper.map(productModel, Car.class);
+    public Car createCar(CarBindingModel carBindingModel) {
+        Car car = this.modelMapper.map(carBindingModel, Car.class);
         return this.carRepository.save(car);
     }
 
@@ -69,20 +69,20 @@ public class CarService {
         return this.carRepository.
                 findAll()
                 .stream()
-                .map(product -> this.modelMapper.map(product, CarBindingModel.class))
+                .map(car -> this.modelMapper.map(car, CarBindingModel.class))
                 .collect(Collectors.toList());
     }
 
     public List<CarBindingModel> findAllByCategory(String categoryName){
         return this.findAll()
                 .stream()
-                .filter(product -> product.getCategory().getName().equalsIgnoreCase(categoryName))
+                .filter(car -> car.getCategory().getName().equalsIgnoreCase(categoryName))
                 .collect(Collectors.toList());
     }
 
     public CarBindingModel findById(Long carId){
         return this.carRepository.findById(carId)
-                .map(product -> this.modelMapper.map(product, CarBindingModel.class))
+                .map(car -> this.modelMapper.map(car, CarBindingModel.class))
                 .orElseThrow(() -> new CarNotFoundException("Car with this id was not found"));
     }
 

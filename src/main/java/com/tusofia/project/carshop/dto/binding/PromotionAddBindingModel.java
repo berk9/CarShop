@@ -12,7 +12,7 @@ public class PromotionAddBindingModel {
     @NotBlank(message = "Date cannot be blank")
     private String validUntil;
 
-    @NotEmpty(message = "There must be more than zero products")
+    @NotEmpty(message = "There must be more than zero cars")
     private String[] cars; // It is string[] because multiple select option in html works with it.
 
     public BigDecimal getPromoPrice() {

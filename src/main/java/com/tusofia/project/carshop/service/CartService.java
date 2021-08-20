@@ -40,31 +40,31 @@ public class CartService {
         return (List<CartCarViewModel>) session.getAttribute("shopping-cart");
     }
 
-    public void addOneCarToCart(CarBindingModel productDTO, HttpSession session){
+    public void addOneCarToCart(CarBindingModel carDTO, HttpSession session){
         this.initializeCart(session);
-        CarDetailsViewModel product = this.modelMapper
-                .map(productDTO, CarDetailsViewModel.class);
+        CarDetailsViewModel car = this.modelMapper
+                .map(carDTO, CarDetailsViewModel.class);
         CartCarViewModel cartCarViewModel = new CartCarViewModel();
-        cartCarViewModel.setCarDetailsViewModel(product);
-        cartCarViewModel.setQuantity(1); //one because there is counter in addItemToCart method and it will collect all the same products
+        cartCarViewModel.setCarDetailsViewModel(car);
+        cartCarViewModel.setQuantity(1); //one because there is counter in addItemToCart method and it will collect all the same cars
         var cart = this.retrieveCart(session);
         this.addItemToCartView(cartCarViewModel, cart);
     }
 
-    public void addOneCarToCart(CarBindingModel productDTO, int quantity , HttpSession session){
+    public void addOneCarToCart(CarBindingModel carDTO, int quantity , HttpSession session){
         this.initializeCart(session);
-        CarDetailsViewModel product = this.modelMapper
-                .map(productDTO, CarDetailsViewModel.class);
+        CarDetailsViewModel car = this.modelMapper
+                .map(carDTO, CarDetailsViewModel.class);
         CartCarViewModel cartCarViewModel = new CartCarViewModel();
-        cartCarViewModel.setCarDetailsViewModel(product);
-        cartCarViewModel.setQuantity(quantity); //one because there is counter in addItemToCart method and it will collect all the same products
+        cartCarViewModel.setCarDetailsViewModel(car);
+        cartCarViewModel.setQuantity(quantity); //one because there is counter in addItemToCart method and it will collect all the same cars
         var cart = this.retrieveCart(session);
         this.addItemToCartView(cartCarViewModel, cart);
     }
 
-    public void addListOfCarsToCart(List<CarBindingModel> products, HttpSession session){
-        for (CarBindingModel productDTO : products){
-            addOneCarToCart(productDTO,session);
+    public void addListOfCarsToCart(List<CarBindingModel> cars, HttpSession session){
+        for (CarBindingModel carDTO : cars){
+            addOneCarToCart(carDTO,session);
         }
     }
 
@@ -92,20 +92,20 @@ public class CartService {
 
     public OrderBindingModel prepareOrder(List<CartCarViewModel> cart, String customer, String comment, BigDecimal price) {
         OrderBindingModel orderBindingModel = this.mapToOrder(customer,comment,price);
-        List<CarBindingModel> products = new ArrayList<>();
+        List<CarBindingModel> cars = new ArrayList<>();
         for (CartCarViewModel item : cart) {
-            CarBindingModel productDTO = this.modelMapper.map(item.getCarDetailsViewModel(), CarBindingModel.class);
+            CarBindingModel carDTO = this.modelMapper.map(item.getCarDetailsViewModel(), CarBindingModel.class);
 
             for (int i = 0; i < item.getQuantity(); i++) {
-                products.add(productDTO);
+                cars.add(carDTO);
             }
         }
-        orderBindingModel.setCars(products);
+        orderBindingModel.setCars(cars);
         return orderBindingModel;
     }
 
-    //should check here if i remove the price from constructor and just add it from the offer ;)
-    public OrderBindingModel prepareOrderFromOffer(Long promotionId, String comment, BigDecimal price, String customer){
+    //should check here if i remove the price from constructor and just add it from the promotion ;)
+    public OrderBindingModel prepareOrderFromPromotion(Long promotionId, String comment, BigDecimal price, String customer){
         OrderBindingModel orderBindingModel = this.mapToOrder(customer,comment,price);
         PromotionBindingModel promotion = this.promotionService.findById(promotionId);
         orderBindingModel.setCars(promotion.getCars());

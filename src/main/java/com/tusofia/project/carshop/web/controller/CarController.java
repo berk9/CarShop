@@ -41,8 +41,8 @@ public class CarController {
 
     @GetMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String editCar(@PathVariable("id") Long productId, Model model) {
-        model.addAttribute("carEditForm", this.carService.findById(productId));
+    public String editCar(@PathVariable("id") Long carId, Model model) {
+        model.addAttribute("carEditForm", this.carService.findById(carId));
         model.addAttribute("categoryTypes", this.categoryService.findAll());
         return "car/edit";
     }
@@ -65,7 +65,7 @@ public class CarController {
 
     @PostMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String editCarConfirm(@Valid @ModelAttribute("productEditForm") CarBindingModel carDTO,
+    public String editCarConfirm(@Valid @ModelAttribute("carEditForm") CarBindingModel carDTO,
                                  @PathVariable("id") Long id,
                                  BindingResult bindingResult){
         if (bindingResult.hasErrors()) {

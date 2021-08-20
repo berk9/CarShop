@@ -19,7 +19,7 @@
 
     <script sec:authorize="hasRole('CUSTOMER')">
         $(document).on("click", ".open-add-to-cart-dialog", function () {
-        $("#productId").val($(this).data('id'));
+        $("#carId").val($(this).data('id'));
         });
     </script>
     <!-- EO: Behaviour-->

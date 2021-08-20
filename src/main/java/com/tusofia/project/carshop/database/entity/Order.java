@@ -32,7 +32,7 @@ public class Order extends BaseEntity {
 
     @ManyToMany(targetEntity = Car.class, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "orders_products",
+            name = "orders_cars",
             joinColumns = @JoinColumn(
                     name = "order_id",
                     referencedColumnName = "id"
@@ -71,11 +71,11 @@ public class Order extends BaseEntity {
         this.waitingTime = waitingTime;
     }
 
-    public List<Car> getProducts() {
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void setProducts(List<Car> cars) {
+    public void setCars(List<Car> cars) {
         this.cars = cars;
     }
 

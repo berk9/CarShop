@@ -15,7 +15,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-warning" th:fragment="navbar(activeTab)">
 
     <!-- Project name -->
-    <a class="navbar-brand" th:href="@{/home}">Pizzaria La Jem</a>
+    <a class="navbar-brand" th:href="@{/home}">Car Shop Application</a>
     <button aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
@@ -35,10 +35,10 @@
                         Menu
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" th:href="@{/offers}">Offers</a>
+                        <a class="dropdown-item" th:href="@{/promotions}">Promotions</a>
                         <a class="dropdown-item" th:href="@{/orders/history}">Order History</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" th:href="@{/cars}">View our Menu</a>
+                        <a class="dropdown-item" th:href="@{/cars}">View our Cars</a>
                     </div>
                 </div>
             </li>
@@ -81,8 +81,8 @@
                         Admin
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" th:href="@{/cars/add}">Add Product</a>
-                        <a class="dropdown-item" th:href="@{/offers/add}">Add Offer</a>
+                        <a class="dropdown-item" th:href="@{/cars/add}">Add Car</a>
+                        <a class="dropdown-item" th:href="@{/promotions/add}">Add Promotion</a>
                     </div>
                 </div>
             </li>

@@ -115,7 +115,7 @@ public class OrderService {
 
         OrderDetailsViewModel orderDetailsViewModel = this.modelMapper.map(order, OrderDetailsViewModel.class);
         orderDetailsViewModel.setCars(
-                order.getProducts()
+                order.getCars()
                 .stream()
                 .map(o -> this.modelMapper.map(o, CarDetailsViewModel.class))
                 .collect(Collectors.toList())

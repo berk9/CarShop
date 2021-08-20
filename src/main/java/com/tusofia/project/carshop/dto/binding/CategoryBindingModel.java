@@ -13,7 +13,7 @@ public class CategoryBindingModel {
     @Size(min = 3,max = 32, message = "Name must be less than 32 characters")
     private String name;
 
-    @NotEmpty(message = "There must be more than zero products")
+    @NotEmpty(message = "There must be more than zero cars")
     private List<CarBindingModel> cars;
 
     public Long getId() {

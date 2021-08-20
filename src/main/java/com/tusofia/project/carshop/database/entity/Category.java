@@ -28,11 +28,11 @@ public class Category extends BaseEntity {
         this.name = name;
     }
 
-    public List<Car> getProducts() {
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void setProducts(List<Car> cars) {
+    public void setCars(List<Car> cars) {
         this.cars = cars;
     }
 }

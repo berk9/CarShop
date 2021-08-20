@@ -31,7 +31,7 @@ public class PromotionService {
     }
 
     @Transactional
-    public Promotion createOffer(PromotionAddBindingModel promotionDTO) {
+    public Promotion createPromotion(PromotionAddBindingModel promotionDTO) {
         BigDecimal oldPrice = new BigDecimal(0);
         Promotion promotion = this.modelMapper.map(promotionDTO, Promotion.class);
         promotion.setValidUntil(TimeUtil.parseDateToTime(promotionDTO.getValidUntil()));
@@ -40,7 +40,7 @@ public class PromotionService {
         for(String carId: promotionDTO.getCars()){
             Car car = this.modelMapper.map(
                     this.carService.findById(Long.parseLong(carId)), Car.class);
-            oldPrice = oldPrice.add(car.getPrice()); //collecting the prices from all the products
+            oldPrice = oldPrice.add(car.getPrice()); //collecting the prices from all the cars
             cars.add(car);
         }
         promotion.setCars(cars);
@@ -67,8 +67,8 @@ public class PromotionService {
                 .collect(Collectors.toList());
     }
 
-    public PromotionBindingModel findById(Long offerId){
-        return this.promotionRepository.findById(offerId)
+    public PromotionBindingModel findById(Long promotionId){
+        return this.promotionRepository.findById(promotionId)
                 .map(promotion -> this.modelMapper.map(promotion, PromotionBindingModel.class))
                 .orElseThrow(() -> new PromotionNotFoundException("Promotion with this id was not found"));
     }

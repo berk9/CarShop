@@ -8,16 +8,16 @@
 <!-- EO: Navbar -->
 
 <div class="container center text-center my-4 w-50">
-    <form th:action="@{/cars/edit/{id}(id=${productEditForm.id})}" method="post" th:object="${productEditForm}" id="editProductForm">
+    <form th:action="@{/cars/edit/{id}(id=${carEditForm.id})}" method="post" th:object="${carEditForm}" id="editCarForm">
         <div class="form-group">
-            <label for="productName">Name</label>
+            <label for="carName">Name</label>
             <input type="text"
                    minlength="3"
                    maxlength="32"
                    th:errorclass="is-invalid"
                    placeholder="Enter the name of the car here"
                    class="form-control"
-                   id="productName"
+                   id="carName"
                    th:field="*{name}"
                    th:value="*{name}"
                    required/>
@@ -27,14 +27,14 @@
         </div>
 
         <div class="form-group">
-            <label for="productDescription">Description</label>
+            <label for="carDescription">Description</label>
             <textarea class="form-control"
                       minlength="10"
                       maxlength="256"
-                      form="editProductForm"
+                      form="editCarForm"
                       placeholder="Description"
                       th:errorclass="is-invalid"
-                      id="productDescription"
+                      id="carDescription"
                       rows="3"
                       th:field="*{description}"
                       th:value="*{description}"
@@ -45,12 +45,12 @@
         </div>
 
         <div class="form-group">
-            <label for="productPrice">Price</label>
+            <label for="carPrice">Price</label>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">$</span>
                 </div>
-                <input type="text" id="productPrice" class="form-control" th:field="*{price}" th:value="*{price}" aria-label="Amount (to the nearest dollar)">
+                <input type="text" id="carPrice" class="form-control" th:field="*{price}" th:value="*{price}" aria-label="Amount (to the nearest dollar)">
                 <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                 </div>
@@ -58,12 +58,13 @@
         </div>
 
         <div class="form-group">
-            <label for="productImgUrl">Image URL</label>
+            <label for="carImgUrl">Image URL</label>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon3">images/car/{name}.{jpg/png}</span>
                 </div>
-                <input type="text" class="form-control" th:field="*{imgSrc}" th:value="*{imgSrc}" id="productImgUrl" aria-describedby="basic-addon3" required>
+                <input type="text" class="form-control" th:field="*{imgSrc}" th:value="*{imgSrc}" id="carImgUrl"
+                       aria-describedby="basic-addon3" required>
             </div>
         </div>
 
@@ -92,8 +93,8 @@
             <div class="col">
                 <div class="form-group">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="productIsActive" th:value="*{activity}" th:field="*{activity}">
-                        <label class="form-check-label pl-4" for="productIsActive">
+                        <input class="form-check-input" type="checkbox" id="carIsActive" th:value="*{activity}" th:field="*{activity}">
+                        <label class="form-check-label pl-4" for="carIsActive">
                             <h6>Is the car active?</h6>
                         </label>
                     </div>
@@ -101,7 +102,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-outline-success w-50">Edit Product</button>
+        <button type="submit" class="btn btn-outline-success w-50">Edit Car</button>
     </form>
 </div>
 

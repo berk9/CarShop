@@ -15,11 +15,11 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" th:action="@{/cart/addProduct}">
+                <form method="post" th:action="@{/cart/addCar}">
                     <div class="modal-body">
                         Add the quantity of the car you want to purchase:
                         <input type="number" id="quantity" name="quantity" value="1" min="1" max="15" step="1"/>
-                        <input id="productId" name="productId" type="hidden" value=""/>
+                        <input id="carId" name="carId" type="hidden" value=""/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

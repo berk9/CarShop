@@ -30,15 +30,15 @@ public class PromotionController {
     @PreAuthorize("hasRole('CUSTOMER')")
     public String allPromotions(Model model){
         model.addAttribute("promotions", this.promotionService.findAllValidPromotions()) ;
-        return "allPromotions";
+        return "/promotion/allPromotions";
     }
 
     @GetMapping("/add")
     @PreAuthorize("hasRole('ADMIN')")
     public String addPromotion(Model model){
         model.addAttribute("promotionInputForm", new PromotionAddBindingModel());
-        model.addAttribute("allProducts", this.carService.findAll());
-        return "createPromotion";
+        model.addAttribute("allCars", this.carService.findAll());
+        return "/promotion/createPromotion";
     }
 
     @PostMapping("/add")
@@ -48,9 +48,9 @@ public class PromotionController {
              BindingResult bindingResult,
              RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return "redirect:/promotions/add";
+            return "redirect:/promotion/add";
         }
-        this.promotionService.createOffer(promotionDTO);
-        return "redirect:/promotions";
+        this.promotionService.createPromotion(promotionDTO);
+        return "redirect:/promotion";
     }
 }

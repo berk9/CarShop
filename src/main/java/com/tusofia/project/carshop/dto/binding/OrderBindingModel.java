@@ -24,7 +24,7 @@ public class OrderBindingModel {
     @NotNull(message = "Boolean should be either true or false")
     private Boolean successful; //thymeleaf does not recognize it if it's isSuccessful
 
-    @NotEmpty(message = "There must be more than zero products")
+    @NotEmpty(message = "There must be more than zero cars")
     private List<CarBindingModel> cars;
 
     @NotNull(message = "Customer cannot be null")

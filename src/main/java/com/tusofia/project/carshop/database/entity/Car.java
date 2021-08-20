@@ -30,8 +30,8 @@ public class Car extends BaseEntity {
     private Category category;
 
     @PreRemove
-    private void removeProductFromCategory(){
-        this.category.getProducts().remove(this);
+    private void removeCarFromCategory(){
+        this.category.getCars().remove(this);
     }
 
     public Car() {
