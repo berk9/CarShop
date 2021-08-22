@@ -31,19 +31,19 @@ public class CarShopApplicationInit implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         if(categoryRepository.count() ==0){
-            Category pizza = new Category();
-            pizza.setName("Pizza");
-            Category drinks = new Category();
-            drinks.setName("Drinks");
-            Category deserts = new Category();
-            deserts.setName("Deserts");
-            Category salads = new Category();
-            salads.setName("Salads");
+            Category sedan = new Category();
+            sedan.setName("Sedans");
+            Category suv = new Category();
+            suv.setName("SUVs and Crossovers");
+            Category station = new Category();
+            station.setName("Station Wagons");
+            Category hatchback = new Category();
+            hatchback.setName("Hatchbacks");
 
-            categoryRepository.save(pizza);
-            categoryRepository.save(drinks);
-            categoryRepository.save(deserts);
-            categoryRepository.save(salads);
+            categoryRepository.save(sedan);
+            categoryRepository.save(suv);
+            categoryRepository.save(station);
+            categoryRepository.save(hatchback);
         }
         if(userRepository.count() == 0){
 
