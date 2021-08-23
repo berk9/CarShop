@@ -25,10 +25,10 @@ public class CarController {
 
     @GetMapping
     public String viewCars(Model model){
-        model.addAttribute("Sedans", this.carService.findAllByCategory("sedans"));
-        model.addAttribute("SUVs and Crossovers", this.carService.findAllByCategory("suvs"));
-        model.addAttribute("Station Wagons", this.carService.findAllByCategory("stations"));
-        model.addAttribute("Hatchbacks", this.carService.findAllByCategory("hatchbacks"));
+        model.addAttribute("sedans", this.carService.findAllByCategory("Sedans"));
+        model.addAttribute("suvs", this.carService.findAllByCategory("SUVs and Crossovers"));
+        model.addAttribute("stations", this.carService.findAllByCategory("Station Wagons"));
+        model.addAttribute("hatchbacks", this.carService.findAllByCategory("Hatchbacks"));
         return "car/index";
     }
 

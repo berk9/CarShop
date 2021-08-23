@@ -38,6 +38,16 @@ textarea {
   right: 0;
 }
 
+#loginSec:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
 #carshop h1 {
   margin: 0;
   font-size: 48px;
@@ -61,8 +71,8 @@ textarea {
   transition: 0.5s;
   margin-top: 30px;
   color: #fff;
-  background: #e03a3c;
-  border: 2px solid #e03a3c;
+    background: #027bfe;
+    border: 2px solid #0062cc;
 }
 
 .btn-get-started:hover {
