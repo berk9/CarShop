@@ -58,7 +58,7 @@
 </div>
 <div class="container w-50">
     <div class="row">
-        <div class="col">
+        <!--<div class="col">
             <form th:action="@{/authentication/sendConfirmEmail}" method="post">
                 <input id="userId" name="userId" type="hidden" th:value="${userProfile.id}"/>
                 <button type="submit"
@@ -72,10 +72,10 @@
                     th:if="${userProfile.phoneNumberConfirmed == false}"
                     class="btn btn-success btn-block my-4">Confirm your phone number
             </button>
-        </div>
+        </div>-->
         <div class="col">
             <a  th:href="@{/authentication/edit}"
-                    class="btn btn-warning btn-block my-4 text-light">Edit your profile
+                    class="btn btn-primary btn-block my-4 text-light">Edit your profile
             </a>
 
         </div>

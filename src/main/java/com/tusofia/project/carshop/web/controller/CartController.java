@@ -66,9 +66,6 @@ public class CartController {
     @PostMapping("/checkout")
     public String checkoutConfirm(String comment, BigDecimal price, HttpSession session, Principal principal) {
         var cart = this.cartService.retrieveCart(session);
-//        if(!this.cartService.checkIfEmailConfirmed(principal.getName())){
-//            return "redirect:/authentication/profile";
-//        }
 
         OrderBindingModel orderBindingModel = this.cartService.prepareOrder(cart, principal.getName(), comment, price);
         this.orderService.addOrderForApproval(orderBindingModel);
@@ -78,9 +75,6 @@ public class CartController {
 
     @PostMapping("/checkoutPromotion")
     public String checkoutConfirm(Long promotionId, String comment, BigDecimal price, Principal principal) {
-        if(!this.cartService.checkIfEmailConfirmed(principal.getName())){
-            return "redirect:/authentication/profile";
-        }
 
         OrderBindingModel orderBindingModel = this.cartService.prepareOrderFromPromotion(promotionId, comment, price, principal.getName());
         this.orderService.addOrderForApproval(orderBindingModel);

@@ -3,8 +3,6 @@ package com.tusofia.project.carshop.web.controller;
 import com.tusofia.project.carshop.dto.binding.auth.UserAddBindingModel;
 import com.tusofia.project.carshop.dto.binding.auth.UserServiceModel;
 import com.tusofia.project.carshop.dto.view.UserDetailsViewModel;
-import com.tusofia.project.carshop.event.ConfirmEmailPublisher;
-import com.tusofia.project.carshop.service.ConfirmationTokenService;
 import com.tusofia.project.carshop.service.UserDetailsServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,14 +20,10 @@ import java.security.Principal;
 @Controller
 public class AuthenticationController {
     private final UserDetailsServiceImpl userService;
-    private final ConfirmationTokenService tokenService;
-    private final ConfirmEmailPublisher emailPublisher;
     private final ModelMapper modelMapper;
 
-    public AuthenticationController(UserDetailsServiceImpl userService, ConfirmationTokenService tokenService, ConfirmEmailPublisher emailPublisher, ModelMapper modelMapper) {
+    public AuthenticationController(UserDetailsServiceImpl userService, ModelMapper modelMapper) {
         this.userService = userService;
-        this.tokenService = tokenService;
-        this.emailPublisher = emailPublisher;
         this.modelMapper = modelMapper;
     }
 
@@ -67,7 +61,7 @@ public class AuthenticationController {
         return "authenticate/edit";
     }
 
-    @GetMapping("/authentication/emailConfirm/{token}")
+/*    @GetMapping("/authentication/emailConfirm/{token}")
     @PreAuthorize("hasRole('CUSTOMER')")
     public String emailConfirm(@PathVariable("token") String token, Principal principal){
         if(!this.tokenService.isTokenValid(token,this.userService.loadUserByUsername(principal.getName()).getEmail())){
@@ -75,7 +69,7 @@ public class AuthenticationController {
         }
         this.userService.confirmUserEmail(this.userService.loadUserByUsername(principal.getName()));
         return "redirect:/home";
-    }
+    }*/
 
     @PostMapping("/register")
     @PreAuthorize("isAnonymous()")
@@ -106,10 +100,10 @@ public class AuthenticationController {
         return "redirect:/authentication/profile";
     }
 
-    @PostMapping("authentication/sendConfirmEmail")
+/*    @PostMapping("authentication/sendConfirmEmail")
     @PreAuthorize("hasRole('CUSTOMER')")
     public String confirmEmail(@ModelAttribute(name="userId") Long userId){
         this.emailPublisher.publish(this.userService.findUserById(userId));
         return "redirect:/home";
-    }
+    }*/
 }
