@@ -27,7 +27,6 @@ public class AuthenticationController {
         this.modelMapper = modelMapper;
     }
 
-
     @GetMapping("/login")
     @PreAuthorize("isAnonymous()")
     public String login(){
@@ -61,16 +60,6 @@ public class AuthenticationController {
         return "authenticate/edit";
     }
 
-/*    @GetMapping("/authentication/emailConfirm/{token}")
-    @PreAuthorize("hasRole('CUSTOMER')")
-    public String emailConfirm(@PathVariable("token") String token, Principal principal){
-        if(!this.tokenService.isTokenValid(token,this.userService.loadUserByUsername(principal.getName()).getEmail())){
-           return "redirect:/authentication/profile";
-        }
-        this.userService.confirmUserEmail(this.userService.loadUserByUsername(principal.getName()));
-        return "redirect:/home";
-    }*/
-
     @PostMapping("/register")
     @PreAuthorize("isAnonymous()")
     public String register(@Valid @ModelAttribute("userRegisterForm") UserAddBindingModel user,
@@ -100,10 +89,4 @@ public class AuthenticationController {
         return "redirect:/authentication/profile";
     }
 
-/*    @PostMapping("authentication/sendConfirmEmail")
-    @PreAuthorize("hasRole('CUSTOMER')")
-    public String confirmEmail(@ModelAttribute(name="userId") Long userId){
-        this.emailPublisher.publish(this.userService.findUserById(userId));
-        return "redirect:/home";
-    }*/
 }
