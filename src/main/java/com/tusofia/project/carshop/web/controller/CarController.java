@@ -1,6 +1,7 @@
 package com.tusofia.project.carshop.web.controller;
 
 import com.tusofia.project.carshop.dto.binding.CarBindingModel;
+import com.tusofia.project.carshop.dto.binding.CarRecommendationBidingModel;
 import com.tusofia.project.carshop.service.CategoryService;
 import com.tusofia.project.carshop.service.CarService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -61,6 +62,22 @@ public class CarController {
 
         this.carService.createCar(carBindingModel);
         return "redirect:/cars";
+    }
+
+    @PostMapping("/recommend")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String recommendCar
+            (@Valid CarRecommendationBidingModel carBindingModel,
+             BindingResult bindingResult,
+             Model model) {
+
+        if (bindingResult.hasErrors()) {
+            //TODO: Handle error and redirect to the form again
+        }
+
+        model.addAttribute("recommendedCars", this.carService.findRecommendedCars(carBindingModel));
+
+        return "redirect:/recommendedCars";
     }
 
     @PostMapping("/edit/{id}")

@@ -1,12 +1,12 @@
 package com.tusofia.project.carshop.database.entity;
 
 
+import com.tusofia.project.carshop.database.entity.car.Car;
 import com.tusofia.project.carshop.database.entity.common.BaseEntity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity

@@ -1,5 +1,6 @@
 package com.tusofia.project.carshop.dto.binding;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
@@ -28,6 +29,9 @@ public class CarBindingModel {
     //TODO: Make it categoryDTO class.
     @NotNull(message = "Category cannot be null")
     private CategoryBindingModel category;
+
+    @Valid
+    private CarDetailsBindingModel carDetailsBindingModel;
 
     public Long getId() {
         return id;
@@ -76,4 +80,12 @@ public class CarBindingModel {
     public CategoryBindingModel getCategory() { return category; }
 
     public void setCategory(CategoryBindingModel category) { this.category = category; }
+
+    public CarDetailsBindingModel getCarDetailsBindingModel() {
+        return carDetailsBindingModel;
+    }
+
+    public void setCarDetailsBindingModel(CarDetailsBindingModel carDetailsBindingModel) {
+        this.carDetailsBindingModel = carDetailsBindingModel;
+    }
 }

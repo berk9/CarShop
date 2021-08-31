@@ -1,6 +1,7 @@
-package com.tusofia.project.carshop.database.entity;
+package com.tusofia.project.carshop.database.entity.car;
 
 
+import com.tusofia.project.carshop.database.entity.Category;
 import com.tusofia.project.carshop.database.entity.common.BaseEntity;
 
 import javax.persistence.*;
@@ -16,9 +17,6 @@ public class Car extends BaseEntity {
     @Column(name = "description", nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "price", nullable = false)
-    private BigDecimal price;
-
     @Column(name = "image_source", nullable = false, unique = true)
     private String imgSrc;
 
@@ -28,6 +26,12 @@ public class Car extends BaseEntity {
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
+
+    @Column(name = "price", nullable = false)
+    private BigDecimal price;
+
+    @OneToOne(targetEntity = CarDetails.class)
+    private CarDetails carDetails;
 
     @PreRemove
     private void removeCarFromCategory(){
@@ -53,14 +57,6 @@ public class Car extends BaseEntity {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
     public String getImgSrc() {
         return imgSrc;
     }
@@ -79,5 +75,21 @@ public class Car extends BaseEntity {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public CarDetails getCarDetails() {
+        return carDetails;
+    }
+
+    public void setCarDetails(CarDetails carDetails) {
+        this.carDetails = carDetails;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

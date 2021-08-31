@@ -1,9 +1,11 @@
 package com.tusofia.project.carshop.service;
 
-import com.tusofia.project.carshop.database.entity.Car;
+import com.tusofia.project.carshop.database.entity.car.Brand;
+import com.tusofia.project.carshop.database.entity.car.Car;
 import com.tusofia.project.carshop.database.entity.Category;
 import com.tusofia.project.carshop.database.repository.CarRepository;
 import com.tusofia.project.carshop.dto.binding.CarBindingModel;
+import com.tusofia.project.carshop.dto.binding.CarRecommendationBidingModel;
 import com.tusofia.project.carshop.exception.CarNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -30,21 +32,20 @@ public class CarService {
     }
 
     @Transactional
-    public Car activateCar(Long activateId){
+    public Car activateCar(Long activateId) {
         Car car = this.carRepository.findById(activateId)
                 .orElseThrow(() -> new CarNotFoundException("No car with the given id was found!"));
 
-        if(car.getActivity()){
+        if (car.getActivity()) {
             car.setActivity(false);
-        }
-        else car.setActivity(true);
+        } else car.setActivity(true);
 
         this.carRepository.save(car);
         return car;
     }
 
     @Transactional
-    public void editCar(Long carId, CarBindingModel carDTO){
+    public void editCar(Long carId, CarBindingModel carDTO) {
         Car car = this.carRepository
                 .findById(carId)
                 .orElseThrow(() -> new CarNotFoundException("Car with this id was not found!"));
@@ -73,17 +74,35 @@ public class CarService {
                 .collect(Collectors.toList());
     }
 
-    public List<CarBindingModel> findAllByCategory(String categoryName){
+    public List<CarBindingModel> findAllByCategory(String categoryName) {
         return this.findAll()
                 .stream()
                 .filter(car -> car.getCategory().getName().equalsIgnoreCase(categoryName))
                 .collect(Collectors.toList());
     }
 
-    public CarBindingModel findById(Long carId){
+    public CarBindingModel findById(Long carId) {
         return this.carRepository.findById(carId)
                 .map(car -> this.modelMapper.map(car, CarBindingModel.class))
                 .orElseThrow(() -> new CarNotFoundException("Car with this id was not found"));
     }
+
+    public List<CarBindingModel> findRecommendedCars(CarRecommendationBidingModel bidingModel) {
+        return carRepository.findAll()
+                .stream()
+                .filter(car -> car.getCarDetails().getCarType()
+                        .equals(bidingModel.getCarDetailsBindingModel().getCarType()))
+                .filter(car -> car.getCategory().equals(bidingModel.getCategory()))
+                .filter(car -> car.getCarDetails().getBrand().equals(bidingModel.getCarDetailsBindingModel().getBrand()))
+                .map(car -> this.modelMapper.map(car, CarBindingModel.class))
+                .collect(Collectors.toList());
+    }
+
+    private boolean isBrandChecked(CarRecommendationBidingModel model){
+        return model.getCarDetailsBindingModel().getBrand().equals(Brand.OTHER);
+    }
+
+    //TODO: you can use the forEach() function from the stream and use manually created methods to filter
+    //TODO: also you can add NONE value in the types and check weather the client is interested in filtering this value
 
 }

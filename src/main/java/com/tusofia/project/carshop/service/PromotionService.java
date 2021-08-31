@@ -1,6 +1,6 @@
 package com.tusofia.project.carshop.service;
 
-import com.tusofia.project.carshop.database.entity.Car;
+import com.tusofia.project.carshop.database.entity.car.Car;
 import com.tusofia.project.carshop.database.entity.Promotion;
 import com.tusofia.project.carshop.database.repository.PromotionRepository;
 import com.tusofia.project.carshop.dto.binding.PromotionAddBindingModel;

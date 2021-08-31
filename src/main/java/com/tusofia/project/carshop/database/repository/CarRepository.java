@@ -1,6 +1,6 @@
 package com.tusofia.project.carshop.database.repository;
 
-import com.tusofia.project.carshop.database.entity.Car;
+import com.tusofia.project.carshop.database.entity.car.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
