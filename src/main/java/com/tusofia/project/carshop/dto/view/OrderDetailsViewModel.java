@@ -3,6 +3,7 @@ package com.tusofia.project.carshop.dto.view;
 import com.tusofia.project.carshop.dto.binding.auth.UserServiceModel;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,10 +15,9 @@ public class OrderDetailsViewModel {
     private LocalDateTime createdOn;
     private Boolean approved; //thymeleaf does not recognize it if it's isApproved
     private Boolean successful; //thymeleaf does not recognize it if it's isSuccessful
-    private LocalDateTime waitingTime;
+    private LocalDate waitingTime;
     private String comment;
     private List<CarDetailsViewModel> cars;
-    private Long waitingMinutes;
 
     public Long getId() {
         return id;
@@ -59,11 +59,11 @@ public class OrderDetailsViewModel {
         this.successful = successful;
     }
 
-    public LocalDateTime getWaitingTime() {
+    public LocalDate getWaitingTime() {
         return waitingTime;
     }
 
-    public void setWaitingTime(LocalDateTime waitingTime) {
+    public void setWaitingTime(LocalDate waitingTime) {
         this.waitingTime = waitingTime;
     }
 
@@ -81,14 +81,6 @@ public class OrderDetailsViewModel {
 
     public void setCars(List<CarDetailsViewModel> cars) {
         this.cars = cars;
-    }
-
-    public Long getWaitingMinutes() {
-        return waitingMinutes;
-    }
-
-    public void setWaitingMinutes(Long waitingMinutes) {
-        this.waitingMinutes = waitingMinutes;
     }
 
     public Boolean getApproved() { return approved; }

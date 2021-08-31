@@ -5,6 +5,7 @@ import com.tusofia.project.carshop.database.entity.common.BaseEntity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Order extends BaseEntity {
     private Boolean successful; //thymeleaf does not recognize it if it's isSuccessful
 
     @Column(name = "waiting_time")
-    private LocalDateTime waitingTime;
+    private LocalDate waitingTime;
 
     @Column(name = "is_approved", nullable = false)
     private Boolean approved;
@@ -63,14 +64,6 @@ public class Order extends BaseEntity {
 
     public void setSuccessful(Boolean successful) { this.successful = successful; }
 
-    public LocalDateTime getWaitingTime() {
-        return waitingTime;
-    }
-
-    public void setWaitingTime(LocalDateTime waitingTime) {
-        this.waitingTime = waitingTime;
-    }
-
     public List<Car> getCars() {
         return cars;
     }
@@ -95,5 +88,13 @@ public class Order extends BaseEntity {
 
     public void setVersion(Integer version) {
         this.version = version;
+    }
+
+    public LocalDate getWaitingTime() {
+        return waitingTime;
+    }
+
+    public void setWaitingTime(LocalDate waitingTime) {
+        this.waitingTime = waitingTime;
     }
 }

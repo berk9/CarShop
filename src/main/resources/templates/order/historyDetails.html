@@ -49,9 +49,8 @@
         <li class="list-group-item" th:if="${orderDetails.successful == false}"><h6>Was the order successful: No</h6></li>
         <li class="list-group-item"
             th:unless="${orderDetails.successful == false}">
-            <h6>You have waited:  </h6>
-            <span th:text="${orderDetails.waitingMinutes}"></span>
-            <h6> minutes</h6>
+            <h6>Expected date of arrival:  </h6>
+            <span th:text="${orderDetails.waitingTime}"></span>
         </li>
     </ul>
     <div class="card-body">

@@ -6,7 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 public class OrderBindingModel {
@@ -19,7 +19,7 @@ public class OrderBindingModel {
 
     @Future(message = "Please select a time in the future")
     @DateTimeFormat(iso= DateTimeFormat.ISO.TIME)
-    private LocalDateTime waitingTime;
+    private LocalDate waitingTime;
 
     @NotNull(message = "Boolean should be either true or false")
     private Boolean successful; //thymeleaf does not recognize it if it's isSuccessful
@@ -48,9 +48,11 @@ public class OrderBindingModel {
         this.totalPrice = totalPrice;
     }
 
-    public LocalDateTime getWaitingTime() { return waitingTime; }
+    public LocalDate getWaitingTime() {
+        return waitingTime;
+    }
 
-    public void setWaitingTime(LocalDateTime waitingTime) {
+    public void setWaitingTime(LocalDate waitingTime) {
         this.waitingTime = waitingTime;
     }
 

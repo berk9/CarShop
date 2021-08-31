@@ -17,6 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -71,7 +74,7 @@ public class OrderService {
 
         order.setApproved(true);
         order.setSuccessful(true);
-        order.setWaitingTime(TimeUtil.parseTimeToDate(waitingTime));
+        order.setWaitingTime(LocalDate.parse(waitingTime));
 
         //In this way we are making optimistic locking to this entity.
         //this.entityManager.lock(order, LockModeType.OPTIMISTIC);
@@ -120,11 +123,6 @@ public class OrderService {
                 .map(o -> this.modelMapper.map(o, CarDetailsViewModel.class))
                 .collect(Collectors.toList())
         );
-        if(orderDetailsViewModel.getWaitingTime() != null){
-            orderDetailsViewModel
-                    .setWaitingMinutes
-                            (Duration.between(orderDetailsViewModel.getCreatedOn(), orderDetailsViewModel.getWaitingTime()).toMinutes());
-        }
         //Checks if the customer has added some comment to the order, and if not, puts this comment below in order to give the employee additional info.
         if(orderDetailsViewModel.getComment().isEmpty()){
             orderDetailsViewModel.setComment("You do not have any comments about this order!");
