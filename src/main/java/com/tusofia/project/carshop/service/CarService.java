@@ -5,7 +5,7 @@ import com.tusofia.project.carshop.database.entity.car.Car;
 import com.tusofia.project.carshop.database.entity.Category;
 import com.tusofia.project.carshop.database.repository.CarRepository;
 import com.tusofia.project.carshop.dto.binding.CarBindingModel;
-import com.tusofia.project.carshop.dto.binding.CarRecommendationBidingModel;
+import com.tusofia.project.carshop.dto.binding.CarRecommendationBindingModel;
 import com.tusofia.project.carshop.exception.CarNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -87,7 +87,7 @@ public class CarService {
                 .orElseThrow(() -> new CarNotFoundException("Car with this id was not found"));
     }
 
-    public List<CarBindingModel> findRecommendedCars(CarRecommendationBidingModel bidingModel) {
+    public List<CarBindingModel> findRecommendedCars(CarRecommendationBindingModel bidingModel) {
         return carRepository.findAll()
                 .stream()
                 .filter(car -> car.getCarDetails().getCarType()
@@ -98,7 +98,7 @@ public class CarService {
                 .collect(Collectors.toList());
     }
 
-    private boolean isBrandChecked(CarRecommendationBidingModel model){
+    private boolean isBrandChecked(CarRecommendationBindingModel model){
         return model.getCarDetailsBindingModel().getBrand().equals(Brand.OTHER);
     }
 

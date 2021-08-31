@@ -1,8 +1,8 @@
 package com.tusofia.project.carshop.dto.binding;
 
-public class CarRecommendationBidingModel {
+public class CarRecommendationBindingModel {
 
-    public CarRecommendationBidingModel() {
+    public CarRecommendationBindingModel() {
     }
 
     private Long id;

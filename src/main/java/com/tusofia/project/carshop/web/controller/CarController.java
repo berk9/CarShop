@@ -1,7 +1,7 @@
 package com.tusofia.project.carshop.web.controller;
 
 import com.tusofia.project.carshop.dto.binding.CarBindingModel;
-import com.tusofia.project.carshop.dto.binding.CarRecommendationBidingModel;
+import com.tusofia.project.carshop.dto.binding.CarRecommendationBindingModel;
 import com.tusofia.project.carshop.service.CategoryService;
 import com.tusofia.project.carshop.service.CarService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -67,7 +67,7 @@ public class CarController {
     @PostMapping("/recommend")
     @PreAuthorize("hasRole('ADMIN')")
     public String recommendCar
-            (@Valid CarRecommendationBidingModel carBindingModel,
+            (@Valid CarRecommendationBindingModel carBindingModel,
              BindingResult bindingResult,
              Model model) {
 
