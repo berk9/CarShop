@@ -9,7 +9,7 @@
 
 <div class="container center text-center my-4 w-50">
     <h1>Add new car</h1>
-    <form th:action="@{/recommend}" method="post" th:object="${carBindingModel}">
+    <form th:action="@{/cars/recommend}" method="post" th:object="${carBindingModel}">
 
         <div th:if="${#fields.hasErrors('*')}">Entry has errors!</div>
 

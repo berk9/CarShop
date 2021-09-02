@@ -41,7 +41,7 @@ public class CarController {
     }
 
     @GetMapping("/recommend")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('CUSTOMER')")
     public String getQuestions(CarBindingModel carBindingModel, Model model) {
         model.addAttribute("categoryTypes", this.categoryService.findAll());
         return "carDetails/questions";
@@ -72,7 +72,7 @@ public class CarController {
     }
 
     @PostMapping("/recommend")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('CUSTOMER')")
     public String recommendCar
             (@Valid CarRecommendationBindingModel carBindingModel,
              BindingResult bindingResult,
