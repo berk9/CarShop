@@ -40,6 +40,13 @@ public class CarController {
         return "car/createCar";
     }
 
+    @GetMapping("/recommend")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String getQuestions(CarBindingModel carBindingModel, Model model) {
+        model.addAttribute("categoryTypes", this.categoryService.findAll());
+        return "carDetails/questions";
+    }
+
     @GetMapping("/edit/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public String editCar(@PathVariable("id") Long carId, Model model) {
