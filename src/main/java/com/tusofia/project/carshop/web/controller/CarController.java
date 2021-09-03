@@ -44,7 +44,7 @@ public class CarController {
     @PreAuthorize("hasRole('CUSTOMER')")
     public String getQuestions(CarBindingModel carBindingModel, Model model) {
         model.addAttribute("categoryTypes", this.categoryService.findAll());
-        return "carDetails/questions";
+        return "carDetails/quiz";
     }
 
     @GetMapping("/edit/{id}")
