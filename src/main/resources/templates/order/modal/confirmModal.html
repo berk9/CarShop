@@ -21,10 +21,10 @@
                       th:method="post"
                       th:action="@{/orders/confirmOrder}">
                     <div class="modal-body">
-                        Please enter the waiting time for order:
+                        Please enter the expected date for order:
                         <input type="date"
                                id="waitingTime"
-                               th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                               th:attr="min=${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"
                                name="waitingTime"/>
                         <!--Checks if the time is present or in future and does not allow to put past time-->
                         <input id="orderConfirmId" name="orderConfirmId" type="hidden" value=""/>

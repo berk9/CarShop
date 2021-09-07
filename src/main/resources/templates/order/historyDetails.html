@@ -50,7 +50,7 @@
         <li class="list-group-item"
             th:unless="${orderDetails.successful == false}">
             <h6>Expected date of arrival:  </h6>
-            <span th:text="${orderDetails.waitingTime}"></span>
+            <span th:text="${#temporals.format(orderDetails.waitingTime, 'dd-MMM-yyyy')}"></span>
         </li>
     </ul>
     <div class="card-body">

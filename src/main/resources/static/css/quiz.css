@@ -9,6 +9,7 @@
 
 /* (B) QUESTION */
 #quizQn {
+    margin-top: .5rem;
     padding: 20px;
     background: #4c93ba;
     color: #fff;
@@ -25,7 +26,8 @@
 }
 #quizAns input[type=radio] { display: none; }
 #quizAns label {
-    background: #fafafa;
+    color: #FFFFFF;
+    background: #74b6db;
     border: 1px solid #eee;
     border-radius: 10px;
     padding: 10px;
@@ -44,6 +46,6 @@
 
 /* (D) BODY... DOES NOT QUITE MATTER */
 html, body {
-    background: #74b6db;
+    background: #FFFFFF;
     font-family: arial, sans-serif;
 }
