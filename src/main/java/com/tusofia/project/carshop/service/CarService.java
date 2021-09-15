@@ -3,9 +3,10 @@ package com.tusofia.project.carshop.service;
 import com.tusofia.project.carshop.database.entity.car.Brand;
 import com.tusofia.project.carshop.database.entity.car.Car;
 import com.tusofia.project.carshop.database.entity.Category;
+import com.tusofia.project.carshop.database.entity.car.FuelType;
 import com.tusofia.project.carshop.database.repository.CarRepository;
 import com.tusofia.project.carshop.dto.binding.CarBindingModel;
-import com.tusofia.project.carshop.dto.binding.CarRecommendationBindingModel;
+import com.tusofia.project.carshop.dto.binding.CarDetailsBindingModel;
 import com.tusofia.project.carshop.exception.CarNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class CarService {
@@ -87,22 +89,47 @@ public class CarService {
                 .orElseThrow(() -> new CarNotFoundException("Car with this id was not found"));
     }
 
-    public List<CarBindingModel> findRecommendedCars(CarRecommendationBindingModel bidingModel) {
-        return carRepository.findAll()
-                .stream()
-                .filter(car -> car.getCarDetails().getCarType()
-                        .equals(bidingModel.getCarDetailsBindingModel().getCarType()))
-                .filter(car -> car.getCategory().equals(bidingModel.getCategory()))
-                .filter(car -> car.getCarDetails().getBrand().equals(bidingModel.getCarDetailsBindingModel().getBrand()))
+    public List<CarBindingModel> findRecommendedCars(CarDetailsBindingModel bindingModel) {
+        return  filterCar(carRepository.findAll().stream(), bindingModel)
                 .map(car -> this.modelMapper.map(car, CarBindingModel.class))
                 .collect(Collectors.toList());
     }
 
-    private boolean isBrandChecked(CarRecommendationBindingModel model){
-        return model.getCarDetailsBindingModel().getBrand().equals(Brand.OTHER);
+    private Stream<Car> filterCar(Stream<Car> carStream, CarDetailsBindingModel bindingModel) {
+        return carStream.filter(car -> filterCarType(car, bindingModel))
+                .filter(car -> filterCategory(car, bindingModel))
+                .filter(car -> filterBrand(car, bindingModel))
+                .filter(car -> filterFuel(car, bindingModel));
     }
 
-    //TODO: you can use the forEach() function from the stream and use manually created methods to filter
-    //TODO: also you can add NONE value in the types and check weather the client is interested in filtering this value
+    private boolean filterCarType(Car car, CarDetailsBindingModel bindingModel){
+        return car.getCarDetails().getCarType().equals(bindingModel.getCarType());
+    }
+
+    private boolean filterCategory(Car car, CarDetailsBindingModel bindingModel){
+        return car.getCategory().getName().equals(bindingModel.getCategoryType().getCategoryName());
+    }
+
+    private boolean filterBrand(Car car, CarDetailsBindingModel bindingModel){
+        if(isBrandChecked(bindingModel)){
+            return car.getCarDetails().getBrand().equals(bindingModel.getBrand());
+        }
+        return true;
+    }
+
+    private boolean isBrandChecked(CarDetailsBindingModel model){
+        return !model.getBrand().equals(Brand.OTHER);
+    }
+
+    private boolean filterFuel(Car car, CarDetailsBindingModel bindingModel){
+        if(isFuelChecked(bindingModel)){
+            return car.getCarDetails().getFuelType().equals(bindingModel.getFuelType());
+        }
+        return true;
+    }
+
+    private boolean isFuelChecked(CarDetailsBindingModel model){
+        return !model.getFuelType().equals(FuelType.NOT_INTERESTED);
+    }
 
 }

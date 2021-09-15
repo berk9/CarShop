@@ -1,7 +1,7 @@
 package com.tusofia.project.carshop.web.controller;
 
 import com.tusofia.project.carshop.dto.binding.CarBindingModel;
-import com.tusofia.project.carshop.dto.binding.CarRecommendationBindingModel;
+import com.tusofia.project.carshop.dto.binding.CarDetailsBindingModel;
 import com.tusofia.project.carshop.service.CategoryService;
 import com.tusofia.project.carshop.service.CarService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -42,7 +42,7 @@ public class CarController {
 
     @GetMapping("/recommend")
     @PreAuthorize("hasRole('CUSTOMER')")
-    public String getQuestions(CarBindingModel carBindingModel, Model model) {
+    public String getQuestions(CarDetailsBindingModel carBindingModel, Model model) {
         model.addAttribute("categoryTypes", this.categoryService.findAll());
         return "carDetails/quiz";
     }
@@ -74,7 +74,7 @@ public class CarController {
     @PostMapping("/recommend")
     @PreAuthorize("hasRole('CUSTOMER')")
     public String recommendCar
-            (@Valid CarRecommendationBindingModel carBindingModel,
+            (@Valid CarDetailsBindingModel carBindingModel,
              BindingResult bindingResult,
              Model model) {
 
@@ -84,7 +84,7 @@ public class CarController {
 
         model.addAttribute("recommendedCars", this.carService.findRecommendedCars(carBindingModel));
 
-        return "redirect:/recommendedCars";
+        return "carDetails/recommendedCars";
     }
 
     @PostMapping("/edit/{id}")
