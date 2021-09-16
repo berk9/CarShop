@@ -5,7 +5,7 @@ public enum Brand {
     BMW("BMW"),
     AUDI("Audi"),
     VW("Volkswagen"),
-    OTHER("Other");
+    NOT_INTERESTED("Not interested");
 
     private final String displayValue;
 

@@ -3,7 +3,7 @@ package com.tusofia.project.carshop.dto.binding;
 import com.tusofia.project.carshop.database.entity.car.Brand;
 import com.tusofia.project.carshop.database.entity.car.CarType;
 import com.tusofia.project.carshop.database.entity.car.CategoryType;
-import com.tusofia.project.carshop.database.entity.car.FuelType;
+import com.tusofia.project.carshop.database.entity.car.EngineType;
 
 import javax.validation.constraints.NotNull;
 
@@ -18,7 +18,7 @@ public class CarDetailsBindingModel {
     private CarType carType;
 
     @NotNull(message = "cannot be null")
-    private FuelType fuelType;
+    private EngineType engineType;
 
     @NotNull(message = "cannot be null")
     private CategoryType categoryType;
@@ -47,12 +47,12 @@ public class CarDetailsBindingModel {
         this.carType = carType;
     }
 
-    public FuelType getFuelType() {
-        return fuelType;
+    public EngineType getEngineType() {
+        return engineType;
     }
 
-    public void setFuelType(FuelType fuelType) {
-        this.fuelType = fuelType;
+    public void setEngineType(EngineType engineType) {
+        this.engineType = engineType;
     }
 
     public CategoryType getCategoryType() {

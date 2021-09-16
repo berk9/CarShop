@@ -54,7 +54,7 @@ public class CarShopApplicationInit implements CommandLineRunner {
             CarDetails carDetailsRS6 = new CarDetails();
             carDetailsRS6.setCarType(CarType.SPORT);
             carDetailsRS6.setBrand(Brand.AUDI);
-            carDetailsRS6.setFuelType(FuelType.PETROL);
+            carDetailsRS6.setEngineType(EngineType.PETROL);
             carDetailsRS6.setCreatedOn(LocalDateTime.now());
 
             Car car = new Car();
@@ -71,7 +71,7 @@ public class CarShopApplicationInit implements CommandLineRunner {
             carDetailsRS3.setCarType(CarType.SPORT);
             carDetailsRS3.setCreatedOn(LocalDateTime.now());
             carDetailsRS3.setBrand(Brand.AUDI);
-            carDetailsRS3.setFuelType(FuelType.PETROL);
+            carDetailsRS3.setEngineType(EngineType.PETROL);
 
             Car car2 = new Car();
             car2.setActivity(true);

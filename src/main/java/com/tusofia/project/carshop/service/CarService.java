@@ -3,7 +3,7 @@ package com.tusofia.project.carshop.service;
 import com.tusofia.project.carshop.database.entity.car.Brand;
 import com.tusofia.project.carshop.database.entity.car.Car;
 import com.tusofia.project.carshop.database.entity.Category;
-import com.tusofia.project.carshop.database.entity.car.FuelType;
+import com.tusofia.project.carshop.database.entity.car.EngineType;
 import com.tusofia.project.carshop.database.repository.CarRepository;
 import com.tusofia.project.carshop.dto.binding.CarBindingModel;
 import com.tusofia.project.carshop.dto.binding.CarDetailsBindingModel;
@@ -99,7 +99,7 @@ public class CarService {
         return carStream.filter(car -> filterCarType(car, bindingModel))
                 .filter(car -> filterCategory(car, bindingModel))
                 .filter(car -> filterBrand(car, bindingModel))
-                .filter(car -> filterFuel(car, bindingModel));
+                .filter(car -> filterEngineType(car, bindingModel));
     }
 
     private boolean filterCarType(Car car, CarDetailsBindingModel bindingModel){
@@ -118,18 +118,18 @@ public class CarService {
     }
 
     private boolean isBrandChecked(CarDetailsBindingModel model){
-        return !model.getBrand().equals(Brand.OTHER);
+        return !model.getBrand().equals(Brand.NOT_INTERESTED);
     }
 
-    private boolean filterFuel(Car car, CarDetailsBindingModel bindingModel){
-        if(isFuelChecked(bindingModel)){
-            return car.getCarDetails().getFuelType().equals(bindingModel.getFuelType());
+    private boolean filterEngineType(Car car, CarDetailsBindingModel bindingModel){
+        if(isEngineTypeChecked(bindingModel)){
+            return car.getCarDetails().getEngineType().equals(bindingModel.getEngineType());
         }
         return true;
     }
 
-    private boolean isFuelChecked(CarDetailsBindingModel model){
-        return !model.getFuelType().equals(FuelType.NOT_INTERESTED);
+    private boolean isEngineTypeChecked(CarDetailsBindingModel model){
+        return !model.getEngineType().equals(EngineType.NOT_INTERESTED);
     }
 
 }

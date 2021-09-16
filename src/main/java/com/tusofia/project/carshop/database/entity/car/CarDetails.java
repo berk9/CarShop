@@ -16,8 +16,8 @@ public class CarDetails extends BaseEntity {
     @Column(name = "car_type", nullable = false)
     private CarType carType;
 
-    @Column(name = "fuel_type", nullable = false)
-    private FuelType fuelType;
+    @Column(name = "engine_type", nullable = false)
+    private EngineType engineType;
 
     public Brand getBrand() {
         return brand;
@@ -35,12 +35,12 @@ public class CarDetails extends BaseEntity {
         this.carType = carType;
     }
 
-    public FuelType getFuelType() {
-        return fuelType;
+    public EngineType getEngineType() {
+        return engineType;
     }
 
-    public void setFuelType(FuelType fuelType) {
-        this.fuelType = fuelType;
+    public void setEngineType(EngineType engineType) {
+        this.engineType = engineType;
     }
 }
 

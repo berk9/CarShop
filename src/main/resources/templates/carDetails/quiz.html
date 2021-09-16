@@ -10,46 +10,51 @@
 
 
 <div class="container center text-center my-4 w-50">
-    <h1>Add new car</h1>
     <form th:action="@{/cars/recommend}" method="post" th:object="${carBindingModel}">
-
-<!--        <div th:if="${#fields.hasErrors('*')}">Entry has errors!</div>-->
 
         <div id="quizWrap">
             <!-- QUESTION -->
-            <div class="quizQn">Car type question</div>
+            <div class="quizQn">Which of these is most important to you when it comes to your vehicle?</div>
             <!-- ANSWER -->
+            <div class="selectAns">
             <select name="carType" th:size="${#lists.size(T(com.tusofia.project.carshop.database.entity.car.CarType).values()) + 1}">
                 <option class="quizAns" th:each="carType : ${T(com.tusofia.project.carshop.database.entity.car.CarType).values()}"
                         th:value="${carType}" th:text="${carType.displayValue}"></option>
             </select>
+            </div>
 
             <!-- QUESTION -->
-            <div class="quizQn">Car type question</div>
+            <div class="quizQn">Which type of engine do you prefer?</div>
             <!-- ANSWER -->
-            <select name="fuelType" th:size="${#lists.size(T(com.tusofia.project.carshop.database.entity.car.FuelType).values()) + 1}">
-                <option class="quizAns" th:each="fuelType : ${T(com.tusofia.project.carshop.database.entity.car.FuelType).values()}"
-                        th:value="${fuelType}" th:text="${fuelType.displayValue}"></option>
+            <div class="selectAns">
+            <select name="engineType" th:size="${#lists.size(T(com.tusofia.project.carshop.database.entity.car.EngineType).values()) + 1}">
+                <option class="quizAns" th:each="engineType : ${T(com.tusofia.project.carshop.database.entity.car.EngineType).values()}"
+                        th:value="${engineType}" th:text="${engineType.displayValue}"></option>
             </select>
-
+            </div>
             <!-- QUESTION -->
-            <div class="quizQn">Which of these is most important to you when it comes to your vehicle?</div>
+            <div class="quizQn">What is your ideal road trip?</div>
             <!-- ANSWER -->
+            <div class="selectAns">
             <select name="categoryType" th:size="${#lists.size(T(com.tusofia.project.carshop.database.entity.car.CategoryType).values()) + 1}">
                 <option class="quizAns" th:each="categoryType : ${T(com.tusofia.project.carshop.database.entity.car.CategoryType).values()}"
-                        th:value="${categoryType}"></option>
+                        th:value="${categoryType}" th:text="${categoryType.displayValue}"></option>
             </select>
+            </div>
 
             <!-- QUESTION -->
-            <div class="quizQn">Car type question</div>
+            <div class="quizQn">Which of these brands is most appealing to you?</div>
             <!-- ANSWER -->
+            <div class="selectAns">
             <select name="brand" th:size="${#lists.size(T(com.tusofia.project.carshop.database.entity.car.Brand).values()) + 1}">
                 <option class="quizAns" th:each="brand : ${T(com.tusofia.project.carshop.database.entity.car.Brand).values()}"
                         th:value="${brand}" th:text="${brand.displayValue}"></option>
             </select>
+            </div>
         </div>
 
-        <button type="submit" class="btn btn-outline-success w-50">Submit new car</button>
+
+        <button type="submit" class="btn btn-outline-success btn-lg btn-block">Find you car</button>
     </form>
 </div>
 

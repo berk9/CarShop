@@ -34,9 +34,8 @@
 
 /* (C) ANSWERS */
 .quizAns {
-    margin: 10px 0;
+    margin: 7px;
     display: grid;
-    grid-template-columns: auto auto;
     grid-gap: 10px;
 }
 .quizAns input[type=button] { display: none; }
@@ -57,6 +56,13 @@
 .quizAns label.wrong {
     background: #ffe8e8;
     border: 1px solid #c78181;
+}
+
+.selectAns {
+    display: grid;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 10px;
 }
 
 /* (D) BODY... DOES NOT QUITE MATTER */
