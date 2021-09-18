@@ -93,6 +93,62 @@
         </div>
         <div class="col">
             <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="category">Type</label>
+                    </div>
+                    <select id="carType"
+                            name="carType"
+                            th:field="*{carDetailsBindingModel.carType}">
+                        <option th:each="aCarType : ${T(com.tusofia.project.carshop.database.entity.car.CarType).values()}"
+                                th:value="${aCarType}"
+                                th:text="${aCarType.name()}"
+                        ></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="category">Brand</label>
+                        </div>
+                        <select id="brand"
+                                name="brand"
+                                th:field="*{carDetailsBindingModel.brand}">
+                            <option th:each="aBrand : ${T(com.tusofia.project.carshop.database.entity.car.Brand).values()}"
+                                    th:value="${aBrand}"
+                                    th:text="${aBrand.name()}"
+                            ></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        <div class="col">
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="category">Engine</label>
+                    </div>
+                    <select id="engineType"
+                            name="engineType"
+                            th:field="*{carDetailsBindingModel.engineType}">
+                        <option th:each="aEngineType : ${T(com.tusofia.project.carshop.database.entity.car.EngineType).values()}"
+                                th:value="${aEngineType}"
+                                th:text="${aEngineType.name()}"
+                        ></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+        <div class="col">
+            <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="carIsActive" th:field="*{activity}">
                     <label class="form-check-label pl-4" for="carIsActive">

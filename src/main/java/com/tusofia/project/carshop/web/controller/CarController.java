@@ -1,9 +1,12 @@
 package com.tusofia.project.carshop.web.controller;
 
+import com.tusofia.project.carshop.database.entity.car.Car;
 import com.tusofia.project.carshop.dto.binding.CarBindingModel;
 import com.tusofia.project.carshop.dto.binding.CarDetailsBindingModel;
 import com.tusofia.project.carshop.service.CategoryService;
 import com.tusofia.project.carshop.service.CarService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,7 @@ import javax.validation.Valid;
 @RequestMapping("/cars")
 public class CarController {
 
+    private static final Logger log = LoggerFactory.getLogger(CarController.class);
     private final CarService carService;
     private final CategoryService categoryService;
 
@@ -63,6 +67,7 @@ public class CarController {
      Model model) {
 
         if (bindingResult.hasErrors()) {
+            log.error(bindingResult.getAllErrors().toString());
             model.addAttribute("categoryTypes", this.categoryService.findAll());
             return "car/createCar";
         }

@@ -30,7 +30,7 @@ public class Car extends BaseEntity {
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
-    @OneToOne(targetEntity = CarDetails.class)
+    @OneToOne(targetEntity = CarDetails.class, cascade = CascadeType.ALL)
     private CarDetails carDetails;
 
     @PreRemove

@@ -24,7 +24,7 @@
             <tbody>
             <th:block th:each="item : ${#session.getAttribute('shopping-cart')}" th:object="${item}">
                 <tr class="row mx-auto">
-                    <th class="col-md-2 text-center"><img th:src="*{carDetailsViewModel.imgSrc}" alt="Car" height="150" width="150"></th>
+                    <th class="col-md-2 text-center"><img th:src="*{'../' + carDetailsViewModel.imgSrc}" alt="Car" height="150" width="150"></th>
                     <td class="col-md-3 text-center" th:text="*{carDetailsViewModel.name}"></td>
                     <td class="col-md-2 text-center" th:text="*{carDetailsViewModel.description}"></td>
                     <td class="col-md-2 text-center" th:text="*{carDetailsViewModel.price}"></td>

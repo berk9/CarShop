@@ -22,7 +22,7 @@
     <tbody>
     <th:block th:each="car : ${promotion.cars}">
         <tr class="row mx-auto">
-            <th class="col-md-2 text-center"><img th:src="*{car.imgSrc}" alt="Car" height="150" width="150"></th>
+            <th class="col-md-2 text-center"><img th:src="*{'../../../' + car.imgSrc}" alt="Car" height="150" width="150"></th>
             <td class="col-md-3 text-center" th:text="*{car.name}"></td>
             <td class="col-md-5 text-center" th:text="*{car.description}"></td>
             <td class="col-md-2 text-center" th:text="*{car.price}"></td>

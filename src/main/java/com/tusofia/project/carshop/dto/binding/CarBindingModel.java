@@ -31,7 +31,7 @@ public class CarBindingModel {
     private CategoryBindingModel category;
 
     @Valid
-    private CarDetailsBindingModel carDetailsBindingModel;
+    private CarDetailsAddBindingModel carDetailsBindingModel;
 
     public Long getId() {
         return id;
@@ -81,11 +81,11 @@ public class CarBindingModel {
 
     public void setCategory(CategoryBindingModel category) { this.category = category; }
 
-    public CarDetailsBindingModel getCarDetailsBindingModel() {
+    public CarDetailsAddBindingModel getCarDetailsBindingModel() {
         return carDetailsBindingModel;
     }
 
-    public void setCarDetailsBindingModel(CarDetailsBindingModel carDetailsBindingModel) {
+    public void setCarDetailsBindingModel(CarDetailsAddBindingModel carDetailsBindingModel) {
         this.carDetailsBindingModel = carDetailsBindingModel;
     }
 }

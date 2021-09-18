@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-sm-4 p-4" th:each="car : ${recommendedCars}">
             <div class="card h-100">
-                <img class="card-img-top" th:src="${car.imgSrc}" alt="Card image cap">
+                <img class="card-img-top" th:src="${'../' + car.imgSrc}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${car.name}"></h5>
                     <p class="card-text" th:text="${car.description}"></p>

@@ -3,6 +3,7 @@ package com.tusofia.project.carshop.service;
 import com.tusofia.project.carshop.database.entity.car.Brand;
 import com.tusofia.project.carshop.database.entity.car.Car;
 import com.tusofia.project.carshop.database.entity.Category;
+import com.tusofia.project.carshop.database.entity.car.CarDetails;
 import com.tusofia.project.carshop.database.entity.car.EngineType;
 import com.tusofia.project.carshop.database.repository.CarRepository;
 import com.tusofia.project.carshop.dto.binding.CarBindingModel;
