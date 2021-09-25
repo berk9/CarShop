@@ -53,28 +53,12 @@ public class UserDetailsViewModel {
         this.email = email;
     }
 
-    public Boolean getEmailConfirmed() {
-        return emailConfirmed;
-    }
-
-    public void setEmailConfirmed(Boolean emailConfirmed) {
-        this.emailConfirmed = emailConfirmed;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public Boolean getPhoneNumberConfirmed() {
-        return phoneNumberConfirmed;
-    }
-
-    public void setPhoneNumberConfirmed(Boolean phoneNumberConfirmed) {
-        this.phoneNumberConfirmed = phoneNumberConfirmed;
     }
 
     public String getCity() {

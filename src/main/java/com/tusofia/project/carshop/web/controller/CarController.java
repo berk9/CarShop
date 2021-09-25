@@ -83,12 +83,7 @@ public class CarController {
              BindingResult bindingResult,
              Model model) {
 
-        if (bindingResult.hasErrors()) {
-            //TODO: Handle error and redirect to the form again
-        }
-
         model.addAttribute("recommendedCars", this.carService.findRecommendedCars(carBindingModel));
-
         return "carDetails/recommendedCars";
     }
 

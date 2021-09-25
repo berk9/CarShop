@@ -6,8 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Table(name = "car_details")
 @Entity
+@Table(name = "car_details")
 public class CarDetails extends BaseEntity {
 
     @Column(name = "brand", nullable = false)

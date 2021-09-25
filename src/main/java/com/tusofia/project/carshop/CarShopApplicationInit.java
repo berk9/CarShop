@@ -110,13 +110,11 @@ public class CarShopApplicationInit implements CommandLineRunner {
             User admin = new User();
             admin.setEmail("admin@example.com");
             admin.setUsername("admin");
-            admin.setEmailConfirmed(true);
-            admin.setPhoneNumberConfirmed(false);
             admin.setName("admin");
             admin.setSurname("admin");
             admin.setPassword(passwordEncoder.encode("admin"));
-            admin.setCity("Asenovgrad");
-            admin.setAddress("Marica 11");
+            admin.setCity("Sofia");
+            admin.setAddress("Studentski grad 59");
 
             admin.setRoles(Set.of(adminRole, customerRole, employeeRole));
             userRepository.save(admin);
@@ -125,13 +123,11 @@ public class CarShopApplicationInit implements CommandLineRunner {
             User customer = new User();
             customer.setEmail("customer@example.com");
             customer.setUsername("customer");
-            customer.setEmailConfirmed(false);
-            customer.setPhoneNumberConfirmed(false);
             customer.setName("customer");
             customer.setSurname("customer");
             customer.setPassword(passwordEncoder.encode("customer"));
-            customer.setCity("Asenovgrad");
-            customer.setAddress("Marica 11");
+            customer.setCity("Sofia");
+            customer.setAddress("Studentski grad 59");
 
             customer.setRoles(Set.of(customerRole));
             userRepository.save(customer);
@@ -141,13 +137,11 @@ public class CarShopApplicationInit implements CommandLineRunner {
             User employee = new User();
             employee.setEmail("employee@example.com");
             employee.setUsername("employee");
-            employee.setEmailConfirmed(false);
-            employee.setPhoneNumberConfirmed(false);
             employee.setName("employee");
             employee.setSurname("employee");
             employee.setPassword(passwordEncoder.encode("employee"));
-            employee.setCity("Asenovgrad");
-            employee.setAddress("Marica 11");
+            employee.setCity("Sofia");
+            employee.setAddress("Studentski grad 59");
 
             employee.setRoles(Set.of(employeeRole, customerRole));
             userRepository.save(employee);

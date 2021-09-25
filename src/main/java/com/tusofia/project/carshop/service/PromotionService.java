@@ -59,10 +59,6 @@ public class PromotionService {
         return this.promotionRepository.findAll()
                 .stream()
                 .filter(promotion -> promotion.getValidUntil().isAfter(LocalDateTime.now()))
-//                .filter(offer -> offer.getProducts()
-//                        .stream()
-//                        .filter(p -> p.getActivity().equals(true))
-//                        .collect(Collectors.toList()))
                 .map(promotion -> this.modelMapper.map(promotion, PromotionBindingModel.class))
                 .collect(Collectors.toList());
     }

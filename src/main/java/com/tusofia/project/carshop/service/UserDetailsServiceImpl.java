@@ -59,8 +59,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             user.setPassword(passwordEncoder.encode(userModel.getPassword()));
         }
 
-        user.setEmailConfirmed(false);
-        user.setPhoneNumberConfirmed(false);
         Role customerRole = this.roleService.findRoleByName("ROLE_CUSTOMER");
         user.setRoles(Set.of(customerRole));
         return userRepository.save(user);
@@ -77,21 +75,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         if(!user.getEmail().equals(userModel.getEmail())){
             user.setEmail(userModel.getEmail());
-            user.setEmailConfirmed(false);
         }
         if(!user.getPhoneNumber().equals(userModel.getPhoneNumber())){
             user.setPhoneNumber(userModel.getPhoneNumber());
-            user.setPhoneNumberConfirmed(false);
         }
 
         user.setCity(userModel.getCity());
         user.setAddress(userModel.getAddress());
-        this.userRepository.save(user);
-    }
-
-    @Transactional
-    public void confirmUserEmail(User user){
-        user.setEmailConfirmed(true);
         this.userRepository.save(user);
     }
 

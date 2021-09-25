@@ -55,14 +55,6 @@ public class OrderService {
         order.setApproved(true);
         order.setSuccessful(false);
 
-        //In this way we are making optimistic locking to this entity.
-        //this.entityManager.lock(order, LockModeType.OPTIMISTIC);
-
-        //publish event
-//        this.orderPublisher.publishDecline(
-//                order.getCustomer().getEmail(),
-//                order.getId().toString());
-
         this.orderRepository.save(order);
     }
 
@@ -75,16 +67,6 @@ public class OrderService {
         order.setApproved(true);
         order.setSuccessful(true);
         order.setWaitingTime(LocalDate.parse(waitingTime));
-
-        //In this way we are making optimistic locking to this entity.
-        //this.entityManager.lock(order, LockModeType.OPTIMISTIC);
-
-        //publish event
-//        this.orderPublisher.publishSuccess(
-//                order.getCustomer().getEmail(),
-//                order.getId().toString(),
-//                order.getWaitingTime().toString(),
-//                order.getTotalPrice().toString());
 
         this.orderRepository.save(order);
     }

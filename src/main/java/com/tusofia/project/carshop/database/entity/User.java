@@ -29,24 +29,14 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "is_email_confirmed", nullable = false)
-    private Boolean emailConfirmed;
-
     @Column(name = "phone_number", unique = true)
     private String phoneNumber;
-
-    @Column(name = "is_phone_confirmed", nullable = false)
-    private Boolean phoneNumberConfirmed;
 
     @Column(name = "city")
     private String city;
 
     @Column(name = "address")
     private String address;
-
-//    @OneToMany(mappedBy = "customer", targetEntity = Order.class,
-//            fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private List<Order> orders;
 
     @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
     @JoinTable(
@@ -132,14 +122,6 @@ public class User extends BaseEntity implements UserDetails {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    public Boolean getEmailConfirmed() { return emailConfirmed; }
-
-    public void setEmailConfirmed(Boolean emailConfirmed) { this.emailConfirmed = emailConfirmed; }
-
-    public Boolean getPhoneNumberConfirmed() { return phoneNumberConfirmed; }
-
-    public void setPhoneNumberConfirmed(Boolean phoneNumberConfirmed) { this.phoneNumberConfirmed = phoneNumberConfirmed; }
 
     public String getCity() {
         return city;
