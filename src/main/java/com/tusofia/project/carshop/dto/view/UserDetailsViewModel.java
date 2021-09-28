@@ -7,9 +7,7 @@ public class UserDetailsViewModel {
     private String name;
     private String surname;
     private String email;
-    private Boolean emailConfirmed;
     private String phoneNumber;
-    private Boolean phoneNumberConfirmed;
     private String city;
     private String address;
 
